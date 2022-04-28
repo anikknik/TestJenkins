@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
+import static io.qameta.allure.Allure.step;
+
 @Tag("demoqaTest")
 public class FirstTest {
 
@@ -20,7 +22,7 @@ public class FirstTest {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     Faker faker = new Faker();
 
-// Значения
+    // Значения
     String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),
@@ -40,32 +42,38 @@ public class FirstTest {
     @Test
     void actions() {
 // Ввод
-        registrationFormPage.openPage("/automation-practice-form")
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setUserEmail(userEmail)
-                .setGender(gender)
-                .setUserNumber(phone)
-                .setBirthDate(day, month, year)
-                .setSubjects(subjects)
-                .setUserHobbies(hobby)
-                .upLoadPicture(img)
-                .setAddress(address)
-                .setState(state)
-                .setCity(city)
-                .submitClick()
+        step("Open registration form", () -> {
+            registrationFormPage.openPage("/automation-practice-form");
+        });
+        step("Fill form", () -> {
+            registrationFormPage.setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setUserEmail(userEmail)
+                    .setGender(gender)
+                    .setUserNumber(phone)
+                    .setBirthDate(day, month, year)
+                    .setSubjects(subjects)
+                    .setUserHobbies(hobby)
+                    .upLoadPicture(img)
+                    .setAddress(address)
+                    .setState(state)
+                    .setCity(city)
+                    .submitClick();
+        });
 
 // Вывод и проверка
-                .checkCompletedForm("Student Name", firstName + " " + lastName)
-                .checkCompletedForm("Student Email", userEmail)
-                .checkCompletedForm("Gender", gender)
-                .checkCompletedForm("Mobile", phone)
-                .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
-                .checkCompletedForm("Subjects", subjects)
-                .checkCompletedForm("Hobbies", hobby)
-                .checkCompletedForm("Picture", img)
-                .checkCompletedForm("Address", address)
-                .checkCompletedForm("State and City", state + " " + city);
+        step("Check from data", () -> {
+            registrationFormPage.checkCompletedForm("Student Name", firstName + " " + lastName)
+                    .checkCompletedForm("Student Email", userEmail)
+                    .checkCompletedForm("Gender", gender)
+                    .checkCompletedForm("Mobile", phone)
+                    .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
+                    .checkCompletedForm("Subjects", subjects)
+                    .checkCompletedForm("Hobbies", hobby)
+                    .checkCompletedForm("Picture", img)
+                    .checkCompletedForm("Address", address)
+                    .checkCompletedForm("State and City", state + " " + city);
+        });
     }
-
 }
+
