@@ -8,12 +8,7 @@ import pages.RegistrationFormPage;
 
 public class FirstTest {
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.holdBrowserOpen = true;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
+
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     Faker faker = new Faker();
