@@ -5,8 +5,7 @@ import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
 
@@ -33,6 +32,8 @@ public class RegistrationFormPage {
     public RegistrationFormPage openPage(String secondUrl) {
         open(secondUrl);
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
 
         return this;
     }

@@ -1,8 +1,6 @@
 package ru.evo;
 
-import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
@@ -10,14 +8,7 @@ import pages.RegistrationFormPage;
 import static io.qameta.allure.Allure.step;
 
 @Tag("demoqaTest")
-public class FirstTest {
-
-    @BeforeAll
-    static void setUp() {
-        Configuration.holdBrowserOpen = true;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
+public class FirstTest extends TestBase {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     Faker faker = new Faker();
@@ -44,6 +35,7 @@ public class FirstTest {
 // Ввод
         step("Open registration form", () -> {
             registrationFormPage.openPage("/automation-practice-form");
+
         });
         step("Fill form", () -> {
             registrationFormPage.setFirstName(firstName)
