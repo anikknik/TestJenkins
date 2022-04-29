@@ -1,6 +1,7 @@
 package ru.evo;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
@@ -31,8 +32,8 @@ public class FirstTest extends TestBase {
 
 
     @Test
+    @DisplayName("Full fill reg form test")
     void actions() {
-// Ввод
         step("Open registration form", () -> {
             registrationFormPage.openPage("/automation-practice-form");
 
@@ -53,7 +54,6 @@ public class FirstTest extends TestBase {
                     .submitClick();
         });
 
-// Вывод и проверка
         step("Check from data", () -> {
             registrationFormPage.checkCompletedForm("Student Name", firstName + " " + lastName)
                     .checkCompletedForm("Student Email", userEmail)
