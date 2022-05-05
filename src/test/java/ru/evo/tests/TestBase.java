@@ -18,6 +18,23 @@ public class TestBase {
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+        CredentialsConfig configLogg = ConfigFactory.create(CredentialsConfig.class);
+
+        String login = configLogg.login();
+        String password = configLogg.password();
+
+        String browser = System.getProperty("browser");
+        String version = System.getProperty("version");
+        String size = System.getProperty("size");
+        String baseUrl = System.getProperty("base_url");
+        String remoteUrl = System.getProperty("remote_url");
+
+        Configuration.browser = browser;
+        Configuration.browserVersion = version;
+        Configuration.browserSize = size;
+        Configuration.baseUrl = baseUrl;
+        Configuration.remote = "https://" + login + ":" + password + "@" + remoteUrl;
+
         // for add Video to attach report
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
