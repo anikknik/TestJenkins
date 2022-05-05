@@ -17,7 +17,6 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         CredentialsConfig configLogg = ConfigFactory.create(CredentialsConfig.class);
 
         String login = configLogg.login();
@@ -26,8 +25,8 @@ public class TestBase {
         String browser = System.getProperty("browser", "chrome");
         String version = System.getProperty("version", "100");
         String size = System.getProperty("size", "1920x1080");
-        String baseUrl = System.getProperty("base_url", "https://demoqa.com");
-        String remoteUrl = System.getProperty("remote_url", "selenoid.autotests.cloud/wd/hub");
+        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
 
         Configuration.browser = browser;
         Configuration.browserVersion = version;
