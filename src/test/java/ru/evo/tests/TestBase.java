@@ -23,7 +23,7 @@ public class TestBase {
         String login = configLogg.login();
         String password = configLogg.password();
 
-        String remoteUrl = System.getProperty("remote_url");
+        String remoteUrl = System.getProperty("remoteurl");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
