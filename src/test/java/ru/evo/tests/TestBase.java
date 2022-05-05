@@ -23,11 +23,11 @@ public class TestBase {
         String login = configLogg.login();
         String password = configLogg.password();
 
-        String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
+        String remoteUrlSelenoid = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://" + login + ":" + password + "@" + remoteUrl;
+        Configuration.remote = "https://" + login + ":" + password + "@" + remoteUrlSelenoid;
 
         /* Примеры кода для запуска с параметрами
         String browser = System.getProperty("browser", "chrome");
