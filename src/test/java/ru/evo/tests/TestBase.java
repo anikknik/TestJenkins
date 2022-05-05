@@ -25,13 +25,13 @@ public class TestBase {
         String browser = System.getProperty("browser", "chrome");
         String version = System.getProperty("version", "100");
         String size = System.getProperty("size", "1920x1080");
-        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        //String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
 
         Configuration.browser = browser;
         Configuration.browserVersion = version;
         Configuration.browserSize = size;
-        Configuration.baseUrl = baseUrl;
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://" + login + ":" + password + "@" + remoteUrl;
 
         // for add Video to attach report
