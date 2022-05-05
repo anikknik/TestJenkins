@@ -23,11 +23,11 @@ public class TestBase {
         String login = configLogg.login();
         String password = configLogg.password();
 
-        String browser = System.getProperty("browser");
-        String version = System.getProperty("version");
-        String size = System.getProperty("size");
-        String baseUrl = System.getProperty("base_url");
-        String remoteUrl = System.getProperty("remote_url");
+        String browser = System.getProperty("browser", "chrome");
+        String version = System.getProperty("version", "100");
+        String size = System.getProperty("size", "1920x1080");
+        String baseUrl = System.getProperty("base_url", "https://demoqa.com");
+        String remoteUrl = System.getProperty("remote_url", "selenoid.autotests.cloud/wd/hub");
 
         Configuration.browser = browser;
         Configuration.browserVersion = version;
