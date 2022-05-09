@@ -33,7 +33,7 @@ public class FirstTest extends TestBase {
 
     @Test
     @DisplayName("Full fill reg form test")
-    void actions() {
+    void actions1() {
         step("Open registration form", () -> {
             registrationFormPage.openPage("/automation-practice-form");
 
@@ -58,6 +58,43 @@ public class FirstTest extends TestBase {
             registrationFormPage.checkCompletedForm("Student Name", firstName + " " + lastName)
                     .checkCompletedForm("Student Email", userEmail)
                     .checkCompletedForm("Gender", gender)
+                    .checkCompletedForm("Mobile", phone)
+                    .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
+                    .checkCompletedForm("Subjects", subjects)
+                    .checkCompletedForm("Hobbies", hobby)
+                    .checkCompletedForm("Picture", img)
+                    .checkCompletedForm("Address", address)
+                    .checkCompletedForm("State and City", state + " " + city);
+        });
+    }
+
+    @Test
+    @DisplayName("Bad full fill reg form test")
+    void actions() {
+        step("Open registration form", () -> {
+            registrationFormPage.openPage("/automation-practice-form");
+
+        });
+        step("Fill form", () -> {
+            registrationFormPage.setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setUserEmail(userEmail)
+                    .setGender(gender)
+                    .setUserNumber(phone)
+                    .setBirthDate(day, month, year)
+                    .setSubjects(subjects)
+                    .setUserHobbies(hobby)
+                    .upLoadPicture(img)
+                    .setAddress(address)
+                    .setState(state)
+                    .setCity(city)
+                    .submitClick();
+        });
+
+        step("Check from data", () -> {
+            registrationFormPage.checkCompletedForm("Student Name1", firstName + " " + lastName)
+                    .checkCompletedForm("Student Email2", userEmail)
+                    .checkCompletedForm("Gender3", gender)
                     .checkCompletedForm("Mobile", phone)
                     .checkCompletedForm("Date of Birth", day + " " + month + "," + year)
                     .checkCompletedForm("Subjects", subjects)
