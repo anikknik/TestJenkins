@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "${JOB_BASE_NAME}",
+    "environment": "some env",
+    "comment": "some comment",
+    "reportLink": "${BUILD_URL}",
+    "language": "en",
+    "messenger": "slack",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "slack": {
+    "token": "{XXX:XXX_XXX slack token}",
+    "chat": "#{Name_channel}",
+    "replyTo": ""
+  }
+}
